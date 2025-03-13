@@ -30,7 +30,6 @@ def preprocess_text(text):
     return " ".join(lemmatized_tokens)  
 
 
-#Change 
 df = pd.read_csv("../data/twitter_training.csv")
 
 text_column = df.columns[-1]
