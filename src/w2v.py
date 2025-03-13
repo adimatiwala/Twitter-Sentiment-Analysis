@@ -23,32 +23,27 @@ def train_word2vec(sentences, vector_size=100, window=5, min_count=1, workers=4,
     """Train Word2Vec model"""
     model = Word2Vec(
         sentences=sentences,
-        vector_size=vector_size,  # Dimensionality of word vectors
-        window=window,  # Maximum distance between current and predicted word
-        min_count=min_count,  # Ignore words that appear less than this
-        workers=workers,  # Number of CPU cores to use
-        epochs=epochs,  # Number of iterations over the corpus
+        vector_size=vector_size, 
+        window=window,  
+        min_count=min_count,  
+        workers=workers,  
+        epochs=epochs,  
         callbacks=[EpochLogger()]
     )
     return model
 
 def main():
-    # Load and preprocess data
     file_path = "../data/processed_twitter_training.csv"
     sentences = load_and_preprocess_data(file_path)
     
-    # Train model
     model = train_word2vec(sentences)
     
-    # Save model
     model.save("../models/word2vec.model")
     
-    # Example usage
     print("\nExample word vectors:")
     try:
-        print("Vector for 'game':", model.wv['game'][:5], "...")  # Show first 5 dimensions
+        print("Vector for 'game':", model.wv['game'][:5], "...") 
         
-        # Find similar words
         print("\nMost similar to 'game':")
         similar_words = model.wv.most_similar('game', topn=5)
         for word, score in similar_words:
