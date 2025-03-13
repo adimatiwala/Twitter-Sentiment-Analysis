@@ -29,12 +29,14 @@ def preprocess_text(text):
     lemmatized_tokens = [lemmatizer.lemmatize(word) for word in tokens]
     return " ".join(lemmatized_tokens)  
 
-df = pd.read_csv("/Users/adityamatiwala/github/Twitter-Sentiment-Analysis/data/twitter_training.csv")
+
+#Change 
+df = pd.read_csv("../data/twitter_training.csv")
 
 text_column = df.columns[-1]
 
 df["processed_tweet"] = df[text_column].apply(preprocess_text)
 
-processed_file_path = "/Users/adityamatiwala/github/Twitter-Sentiment-Analysis/data/processed_twitter_training.csv"
+processed_file_path = "../data/processed_twitter_training.csv"
 df.to_csv(processed_file_path, index=False)
 
