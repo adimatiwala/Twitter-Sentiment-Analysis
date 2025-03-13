@@ -4,7 +4,6 @@ from gensim.models import Word2Vec
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 import logging
-from scipy.stats import multivariate_normal
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
